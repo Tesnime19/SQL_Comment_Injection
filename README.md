@@ -5,6 +5,7 @@ This project demonstrates an SQL Injection attack using comments (`--`) to bypas
 
 ## Prerequisites
 - Python 3.12 or higher
+- Virtual Machine (VM) setup using venv for isolated Python environment
 - ngrok (download from https://ngrok.com)
 
 ## Installation
@@ -14,26 +15,36 @@ This project demonstrates an SQL Injection attack using comments (`--`) to bypas
     cd SQL_Comment_Injection
     ```
 
-2. Install the required Python dependencies:
+2. Create a virtual environment using venv:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+
+3. Install the required Python dependencies:
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Download and install ngrok:
+4. Download and install ngrok:
     - Visit https://ngrok.com, sign up, and download ngrok.
     - Place the ngrok binary in the root directory of this project.
 
 ## Usage
-1. Run the setup script:
+1. Activate the virtual environment (if not already activated):
+    ```bash
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+
+2. Run the setup script:
     ```bash
     ./ngrok_setup.sh
     ```
 
-2. Access the application:
-    - ngrok will generate a public URL (e.g., `http://1234abcd.ngrok.io`).
-    - Share this URL with others to test the SQL Injection vulnerability.
+3. Access the application:
+    - ngrok will generate a public URL (`http://1234abcd.ngrok.io`).
 
-3. Test the vulnerability:
+4. Test the vulnerability:
     - Enter `admin' --` as the username and leave the password field blank.
     - This will bypass the authentication and log you in as the admin.
 
@@ -42,3 +53,4 @@ To fix this vulnerability:
 1. Use parameterized queries or an ORM (e.g., SQLAlchemy).
 2. Validate and sanitize all user inputs.
 3. Avoid constructing SQL queries dynamically with user data.
+
